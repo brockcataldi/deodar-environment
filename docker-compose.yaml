@@ -1,0 +1,43 @@
+# clipper-environment
+
+services: 
+  db: 
+    environment: 
+      MYSQL_DATABASE: password
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: wordpress
+    image: "mariadb:10.5.8"
+    ports: 
+      - "3609:3306"
+      - "33690:33060"
+    restart: always
+  phpmyadmin: 
+    environment: 
+      MYSQL_ROOT_PASSWORD: password
+    image: phpmyadmin/phpmyadmin
+    links: 
+      - "db:mysql"
+    ports: 
+      - "8081:80"
+  wordpress: 
+    depends_on: 
+      - db
+    environment: 
+      WORDPRESS_DB_HOST: "db:3306"
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_USER: wordpress
+      WP_DEBUG: 1
+      WP_HOME: "http://localhost:8080"
+      WP_SITEURL: "http://localhost:8080"
+    image: "wordpress:5.8-php7.4"
+    ports: 
+      - "8080:80"
+    restart: always
+    volumes: 
+      - "./wp-content/themes:/var/www/html/wp-content/themes"
+      - "./wp-content/plugins:/var/www/html/wp-content/plugins"
+      - "./local/uploads:/var/www/html/wp-content/uploads"
+version: "3.3"
+volumes: 
+  db_data: {}
