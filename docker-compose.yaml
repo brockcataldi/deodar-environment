@@ -3,7 +3,7 @@
 services: 
   db: 
     environment: 
-      MYSQL_DATABASE: password
+      MYSQL_DATABASE: wordpress
       MYSQL_PASSWORD: wordpress
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: wordpress
