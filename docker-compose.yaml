@@ -30,7 +30,7 @@ services:
       WP_DEBUG: 1
       WP_HOME: "http://localhost:8080"
       WP_SITEURL: "http://localhost:8080"
-    image: "wordpress:5.8-php7.4"
+    image: "wordpress:5.8.1-php7.4"
     ports: 
       - "8080:80"
     restart: always
