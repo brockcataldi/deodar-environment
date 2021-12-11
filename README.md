@@ -1,6 +1,6 @@
 
 
-# Spruce Environment
+#  Deodar Environment
 
 The Docker WordPress Environment used for really any WordPress local project.  But this one is really used for the Spruce Stack
 
